@@ -1,42 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 body {
-    margin: 0px;
-  }
-  
-  #game_grid {
-    border: 2px tomato solid;
-    width: 600px;
-    height: 400px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  
-  .card {
-    width: 33.3%;
-    position: relative;
-    transition: transform 1s;
-    perspective: 1000px;
-    transform-style: preserve-3d;
-  }
-  
-  
-  img {
-    width: 100%
-  }
-  
-  .front_face,
-  .back_face {
-    position: absolute;
-    backface-visibility: hidden;
-  }
-  
-  
-  .flip {
-    transform: rotateY(180deg);
-  }
-  
-  
-  .front_face {
-    transform: rotateY(180deg);
-  }
+  margin: 0px;
+  font-family: "Press Start 2P", cursive;
+}
+
+#game_grid {
+  border: 2px tomato solid;
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#game_grid.med {
+  justify-content: space-between;
+}
+
+.card {
+  width: 33.3%;
+  position: relative;
+  transition: transform 1s;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.card.med {
+  width: 22.9%;
+}
+.card.hard {
+  width: 16.6%;
+}
+
+img {
+  width: 100%;
+}
+
+.front_face,
+.back_face {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.front_face {
+  transform: rotateY(180deg);
+}
+
+.locked{
+  pointer-events: none;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#stats {
+  display: flex;
+  flex-direction: row;
+}
+
+#stats p {
+  margin: 20px;
+}
+
+#buttons {
+  padding: 10px;
+}
+
+#buttons button {
+  font-family: "Press Start 2P", cursive;
+  padding: 10px;
+  border: none;
+  background-color: rgb(161, 159, 160);
+}
+#buttons button:hover {
+  background-color: rgb(240, 64, 55);
+  color: white;
+}
+
+#options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+#controls div {
+  margin: 0 20px;
+}
