@@ -15,6 +15,7 @@ const setup = () => {
   const startButton = $("#startButton");
   const resetButton = $("#resetButton");
   const difficultySelect = $("#difficultySelect");
+  const themeBuuton = $("#themeButton");
 
   let timerInterval;
 
@@ -73,6 +74,7 @@ const setup = () => {
     $(".card").remove();
 
     $(".card").removeClass("flip").off("click");
+    $("#game_grid").removeClass("dark");
     createCards();
     updateStats();
   };
@@ -106,12 +108,12 @@ const setup = () => {
 
     for (let i = 0; i < cardsCount; i++) {
       const cardElement = $("<div>").addClass("card");
-      if(cardsCount == 24){
-        cardElement.addClass("hard")
+      if (cardsCount == 24) {
+        cardElement.addClass("hard");
       }
-      if(cardsCount == 12){
-        container.addClass("med")
-        cardElement.addClass("med")
+      if (cardsCount == 12) {
+        container.addClass("med");
+        cardElement.addClass("med");
       }
       const frontFace = $("<img>")
         .addClass("front_face")
@@ -134,6 +136,10 @@ const setup = () => {
   };
 
   const flipCard = function () {
+    if (clicks == 10) {
+      clicks++;
+      hint();
+    }
     if ($(this).hasClass("flip")) return;
 
     $(this).toggleClass("flip");
@@ -145,8 +151,8 @@ const setup = () => {
       secondCard = $(this).find(".front_face")[0];
 
       if (firstCard.src === secondCard.src) {
-        $(`#${firstCard.id}`).parent().off("click");
-        $(`#${secondCard.id}`).parent().off("click");
+        $(`#${firstCard.id}`).parent().off("click").addClass("matched");
+        $(`#${secondCard.id}`).parent().off("click").addClass("matched");
         firstCard = undefined;
         secondCard = undefined;
         matchedCards += 2;
@@ -172,6 +178,19 @@ const setup = () => {
     updateStats();
   };
 
+  const hint = () => {
+    alert("POWER UP!");
+    $(".card").each(function () {
+      if (!$(this).hasClass("matched")) {
+        $(this).addClass("flip");
+      }
+    });
+
+    setTimeout(() => {
+      $(".card").not(".matched").removeClass("flip");
+    }, 1000);
+  };
+
   const updateStats = () => {
     clicksCounter.text(`Clicks: ${clicks}`);
     pairsCounter.text(`Pairs Matched: ${matchedCards / 2} / ${totalCards / 2}`);
@@ -192,8 +211,14 @@ const setup = () => {
     resetGame();
   };
 
+  const theme = () => {
+    $("#game_grid").toggleClass("dark");
+    $(".card").toggleClass("dark");
+  };
+
   startButton.on("click", startGame);
   resetButton.on("click", resetGame);
+  themeBuuton.on("click", theme);
   difficultySelect.on("change", updateDifficulty);
 
   createCards();

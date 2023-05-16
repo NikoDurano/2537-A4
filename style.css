@@ -52,7 +52,9 @@ img {
 .locked{
   pointer-events: none;
 }
-
+.matched{
+background-color: aliceblue;
+}
 header {
   display: flex;
   flex-direction: column;
