@@ -1,11 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+html,body{
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0px;
   font-family: "Press Start 2P", cursive;
 }
 
+#background{
+  background-image: url("surf.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
 #game_grid {
-  border: 2px tomato solid;
+  /* border: 2px tomato solid; */
   width: 600px;
   height: 400px;
   margin: auto;
