@@ -19,6 +19,7 @@ const setup = () => {
 
   let timerInterval;
 
+
   const startTimer = () => {
     timerInterval = setInterval(() => {
       time--;
@@ -79,6 +80,11 @@ const setup = () => {
     updateStats();
   };
 
+  /* 
+  This function generates an array of random numbers between 1 and 810.
+  Each number generated gets put into the array twice.
+  The array is then shuffled.
+  */
   function generateRandomNumbersArray(length) {
     const numbers = [];
 
@@ -92,6 +98,7 @@ const setup = () => {
     return numbers;
   }
 
+  // This is the method used to shuffle the array.
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -115,6 +122,9 @@ const setup = () => {
         container.addClass("med");
         cardElement.addClass("med");
       }
+
+      // Rather than using the API for the images, going to the source is just easier
+      // The random numbers are used in the url to get images of random pokemon
       const frontFace = $("<img>")
         .addClass("front_face")
         .attr(
