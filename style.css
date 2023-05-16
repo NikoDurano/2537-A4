@@ -16,6 +16,9 @@ body {
 #game_grid.med {
   justify-content: space-between;
 }
+.dark {
+  background-color: black;
+}
 
 .card {
   width: 33.3%;
@@ -49,11 +52,11 @@ img {
   transform: rotateY(180deg);
 }
 
-.locked{
+.locked {
   pointer-events: none;
 }
-.matched{
-background-color: aliceblue;
+.matched {
+  opacity: 100%;
 }
 header {
   display: flex;
@@ -73,6 +76,8 @@ header {
 
 #buttons {
   padding: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 #buttons button {
@@ -95,4 +100,14 @@ header {
 
 #controls div {
   margin: 0 20px;
+}
+
+select {
+  font-family: "Press Start 2P", cursive;
+  padding: 10px;
+}
+
+select option {
+  font-family: "Press Start 2P", cursive;
+
 }
